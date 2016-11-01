@@ -79,7 +79,6 @@ eval $(dircolors ~/.dircolors)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#alias yaourt="sudo /usr/bin/yaourt_snapshot.sh"
 alias Eawe="vim ~/.config/awesome/rc.lua"
 alias Ezsh="vim ~/.zshrc" 
 alias UUA="yaourt -Syua --devel"
