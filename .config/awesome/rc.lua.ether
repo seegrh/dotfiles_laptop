@@ -221,7 +221,7 @@ memmargin:set_top(6)
 memmargin:set_bottom(6)
 memupd = lain.widgets.mem({
     settings = function()
-            mem_perc = tonumber((mem_now.used * mem_now.used) / mem_now.total)
+            mem_perc = tonumber((mem_now.used * 100) / mem_now.total)
 
             if mem_perc >= 90 then
                 membar:set_color(red)
