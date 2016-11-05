@@ -63,7 +63,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/ether/theme.lua")
 modkey     = "Mod4"
 altkey     = "Mod1"
 terminal   = "urxvtc" or "xterm"
-terminal_cmd = 'urxvtc -e bash -c "tmux"'
+--terminal_cmd = 'urxvtc -e bash -c "tmux"'
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -528,43 +528,45 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey }, "Escape", awful.tag.history.restore),
 
-    -- Non-empty tag browsing
-    awful.key({ altkey }, "Left", function () lain.util.tag_view_nonempty(-1) end),
-    awful.key({ altkey }, "Right", function () lain.util.tag_view_nonempty(1) end),
+--    -- Non-empty tag browsing
+--    awful.key({ altkey }, "Left", function () lain.util.tag_view_nonempty(-1) end),
+--    awful.key({ altkey }, "Right", function () lain.util.tag_view_nonempty(1) end),
 
     -- Default client focus
-    awful.key({ altkey }, "k",
+--    awful.key({ altkey }, "k",
+    awful.key({ modkey }, "k",
         function ()
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ altkey }, "j",
+--    awful.key({ altkey }, "j",
+    awful.key({ modkey }, "j",
         function ()
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
 
-    -- By direction client focus
-    awful.key({ modkey }, "j",
-        function()
-            awful.client.focus.bydirection("down")
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey }, "k",
-        function()
-            awful.client.focus.bydirection("up")
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey }, "h",
-        function()
-            awful.client.focus.bydirection("left")
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey }, "l",
-        function()
-            awful.client.focus.bydirection("right")
-            if client.focus then client.focus:raise() end
-        end),
+--    -- By direction client focus
+--    awful.key({ modkey }, "j",
+--        function()
+--            awful.client.focus.bydirection("down")
+--            if client.focus then client.focus:raise() end
+--        end),
+--    awful.key({ modkey }, "k",
+--        function()
+--            awful.client.focus.bydirection("up")
+--            if client.focus then client.focus:raise() end
+--        end),
+--    awful.key({ modkey }, "h",
+--        function()
+--            awful.client.focus.bydirection("left")
+--            if client.focus then client.focus:raise() end
+--        end),
+--    awful.key({ modkey }, "l",
+--        function()
+--            awful.client.focus.bydirection("right")
+--            if client.focus then client.focus:raise() end
+--        end),
 
     -- Show Menu
     awful.key({ modkey }, "w",
@@ -572,18 +574,18 @@ globalkeys = awful.util.table.join(
             mymainmenu:show({ keygrabber = true })
         end),
 
-    -- Show/Hide Wibox
-    awful.key({ modkey }, "b", function ()
-        mytopwibox[mouse.screen].visible = not mytopwibox[mouse.screen].visible
-        mybottomwibox[mouse.screen].visible = not mybottomwibox[mouse.screen].visible
-    end),
+--    -- Show/Hide Wibox
+--    awful.key({ modkey }, "b", function ()
+--        mytopwibox[mouse.screen].visible = not mytopwibox[mouse.screen].visible
+--        mybottomwibox[mouse.screen].visible = not mybottomwibox[mouse.screen].visible
+--    end),
 
-    -- On the fly useless gaps change
-    awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end),
-    awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
+--    -- On the fly useless gaps change
+--    awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end),
+--    awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
 
-    -- Rename tag
-    awful.key({ altkey, "Shift"   }, "r", function () lain.util.rename_tag(mypromptbox) end),
+--    -- Rename tag
+--    awful.key({ altkey, "Shift"   }, "r", function () lain.util.rename_tag(mypromptbox) end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -598,18 +600,18 @@ globalkeys = awful.util.table.join(
                 client.focus:raise()
             end
         end),
-    awful.key({ altkey, "Shift"   }, "l",      function () awful.tag.incmwfact( 0.05)     end),
-    awful.key({ altkey, "Shift"   }, "h",      function () awful.tag.incmwfact(-0.05)     end),
-    awful.key({ modkey, "Shift"   }, "l",      function () awful.tag.incnmaster(-1)       end),
+    awful.key({ modkey,           }, "l",      function () awful.tag.incmwfact( 0.05)     end),
+    awful.key({ modkey,           }, "h",      function () awful.tag.incmwfact(-0.05)     end),
     awful.key({ modkey, "Shift"   }, "h",      function () awful.tag.incnmaster( 1)       end),
-    awful.key({ modkey, "Control" }, "l",      function () awful.tag.incncol(-1)          end),
+    awful.key({ modkey, "Shift"   }, "l",      function () awful.tag.incnmaster(-1)       end),
     awful.key({ modkey, "Control" }, "h",      function () awful.tag.incncol( 1)          end),
+    awful.key({ modkey, "Control" }, "l",      function () awful.tag.incncol(-1)          end),
     awful.key({ modkey,           }, "space",  function () awful.layout.inc(layouts,  1)  end),
     awful.key({ modkey, "Shift"   }, "space",  function () awful.layout.inc(layouts, -1)  end),
     awful.key({ modkey, "Control" }, "n",      awful.client.restore),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn_with_shell(terminal_cmd) end),
+    awful.key({ modkey,           }, "Return", function () awful.util.spawn_with_shell(terminal) end),
     awful.key({ modkey, "Control" }, "r",      awesome.restart),
     awful.key({ modkey, "Shift"   }, "q",      awesome.quit),
 
@@ -687,7 +689,7 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-    awful.key({ altkey, "Shift"   }, "m",      lain.util.magnify_client                         ),
+--    awful.key({ altkey, "Shift"   }, "m",      lain.util.magnify_client                         ),
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
