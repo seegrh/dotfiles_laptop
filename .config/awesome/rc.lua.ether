@@ -427,7 +427,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local top_right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then top_right_layout:add(wibox.widget.systray()) end
+    --if s == 1 then top_right_layout:add(wibox.widget.systray()) end
     top_right_layout:add(small_spr)
     top_right_layout:add(mpdicon)
     top_right_layout:add(mpdwidget)
@@ -474,6 +474,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local bottom_right_layout = wibox.layout.fixed.horizontal()
+    if s == 1 then bottom_right_layout:add(wibox.widget.systray()) end
     --bottom_right_layout:add(volicon)
     --bottom_right_layout:add(volumewidget)
     --bottom_right_layout:add(bar_spr)
@@ -886,3 +887,31 @@ for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
       end)
 end
 -- }}}
+
+-- {{{ Run autostarting applications only once
+function autostart(cmd, delay)
+    delay = delay or 0
+    awful.util.spawn_with_shell("pgrep -u $USER -x -f '" .. cmd .. "' || ( sleep " .. delay .. " && " .. cmd .. " )")
+end
+
+-- Autostart applications. The extra argument is optional, it means how long to
+-- delay a command before starting it (in seconds).
+--autostart("pkill conky", 1)
+--autostart("urxvtd -q -f -o", 1)
+--autostart("mpd", 1)
+--autostart("xscreensaver -no-splash", 1)
+--autostart("xflux -z 94596", 1)
+--autostart("redshift", 1)
+--autostart("udiskie -2", 1)
+--autostart("compton -b", 1)
+--autostart("hp-systray", 1)
+--autostart("dropbox", 1)
+--autostart("insync start", 1)
+--autostart("megasync", 1)
+--autostart("~/Scripts/Theming/1440.sh", 1)
+--autostart("~/Scripts/up.sh", 1)
+--autostart("pkill nm-applet", 1)
+autostart("nm-applet", 4)
+
+-- }}}
+
