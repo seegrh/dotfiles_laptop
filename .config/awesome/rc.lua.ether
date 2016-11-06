@@ -133,6 +133,7 @@ markup = lain.util.markup
 blue   = beautiful.fg_focus
 red    = "#EB8F8F"
 green  = "#8FEB8F"
+orange  = "#EAEB8F"
 
 -- Textclock
 mytextclock = awful.widget.textclock("<span font='Tamsyn 5'> </span>%H:%M ")
@@ -201,10 +202,10 @@ cpuupd = lain.widgets.cpu({
             if cpu_perc >= 90 then
                 cpubar:set_color(red)
             elseif cpu_perc > 60 then
-                cpubar:set_color(beautiful.fg_normal)
+                cpubar:set_color(orange)
                 cpuicon:set_image(beautiful.cpu)
             elseif cpu_perc > 30 then
-                cpubar:set_color(beautiful.fg_normal)
+                cpubar:set_color(green)
                 cpuicon:set_image(beautiful.cpu)
             else
                 cpubar:set_color(green)
@@ -234,10 +235,10 @@ memupd = lain.widgets.mem({
             if mem_perc >= 90 then
                 membar:set_color(red)
             elseif mem_perc > 60 then
-                membar:set_color(beautiful.fg_normal)
+                membar:set_color(orange)
                 memicon:set_image(beautiful.mem)
             elseif mem_perc > 30 then
-                membar:set_color(beautiful.fg_normal)
+                membar:set_color(green)
                 memicon:set_image(beautiful.mem)
             else
                 membar:set_color(green)
@@ -910,7 +911,7 @@ end
 --autostart("megasync", 1)
 --autostart("~/Scripts/Theming/1440.sh", 1)
 --autostart("~/Scripts/up.sh", 1)
---autostart("pkill nm-applet", 1)
+autostart("pkill nm-applet", 1)
 autostart("nm-applet", 4)
 
 -- }}}
