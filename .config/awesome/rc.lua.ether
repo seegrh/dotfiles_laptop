@@ -201,11 +201,11 @@ cpuupd = lain.widgets.cpu({
 
             if cpu_perc >= 90 then
                 cpubar:set_color(red)
-            elseif cpu_perc > 60 then
-                cpubar:set_color(orange)
+            elseif cpu_perc > 66 then
+                cpubar:set_color(red)
                 cpuicon:set_image(beautiful.cpu)
-            elseif cpu_perc > 30 then
-                cpubar:set_color(green)
+            elseif cpu_perc > 33 then
+                cpubar:set_color(orange)
                 cpuicon:set_image(beautiful.cpu)
             else
                 cpubar:set_color(green)
@@ -234,11 +234,11 @@ memupd = lain.widgets.mem({
 
             if mem_perc >= 90 then
                 membar:set_color(red)
-            elseif mem_perc > 60 then
-                membar:set_color(orange)
+            elseif mem_perc > 66 then
+                membar:set_color(red)
                 memicon:set_image(beautiful.mem)
-            elseif mem_perc > 30 then
-                membar:set_color(green)
+            elseif mem_perc > 33 then
+                membar:set_color(orange)
                 memicon:set_image(beautiful.mem)
             else
                 membar:set_color(green)
